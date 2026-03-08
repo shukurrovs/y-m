@@ -255,14 +255,14 @@
 
         <!-- Элегантные рамки -->
         <div
-            class="absolute top-4 left-4 right-4 bottom-4 border border-darkGold/30 rounded-t-full pointer-events-none">
+            class="absolute top-3 left-3 right-3 bottom-3 md:top-4 md:left-4 md:right-4 md:bottom-4 border border-darkGold/30 rounded-t-full pointer-events-none">
         </div>
         <div
-            class="absolute top-6 left-6 right-6 bottom-6 border border-darkGold/15 rounded-t-full pointer-events-none">
+            class="absolute top-5 left-5 right-5 bottom-5 md:top-6 md:left-6 md:right-6 md:bottom-6 border border-darkGold/15 rounded-t-full pointer-events-none">
         </div>
 
         <!-- Контент -->
-        <div class="relative z-10 pt-24 px-8 text-center flex flex-col items-center">
+        <div class="relative z-10 pt-20 px-4 md:pt-24 md:px-8 text-center flex flex-col items-center">
 
             <!-- Декоративный логотип -->
             <img src="ym_wedding_logo_banana_pro.png" alt="Y & M Logo"
@@ -278,14 +278,18 @@
             </p>
 
             <!-- Имена -->
-            <div class="my-16 reveal-scale w-full">
-                <h1 class="font-script text-7xl text-darkGold leading-tight drop-shadow-sm">Yusuf</h1>
-                <div class="flex items-center justify-center gap-4 my-4">
-                    <div class="w-16 h-[1px] bg-darkGold/40"></div>
-                    <span class="font-script text-5xl text-navy">&</span>
-                    <div class="w-16 h-[1px] bg-darkGold/40"></div>
+            <div class="my-12 md:my-16 reveal-scale w-full px-2">
+                <h1
+                    class="font-script text-5xl md:text-7xl text-darkGold leading-tight drop-shadow-sm whitespace-normal break-words">
+                    Yusuf</h1>
+                <div class="flex items-center justify-center gap-2 md:gap-4 my-3 md:my-4">
+                    <div class="w-10 md:w-16 h-[1px] bg-darkGold/40"></div>
+                    <span class="font-script text-4xl md:text-5xl text-navy">&</span>
+                    <div class="w-10 md:w-16 h-[1px] bg-darkGold/40"></div>
                 </div>
-                <h1 class="font-script text-7xl text-darkGold leading-tight drop-shadow-sm">Mushtariybonu</h1>
+                <h1
+                    class="font-script text-5xl md:text-7xl text-darkGold leading-tight drop-shadow-sm whitespace-normal break-words">
+                    Mushtariybonu</h1>
             </div>
 
             <!-- Разделитель -->
@@ -296,15 +300,15 @@
 
             <!-- Календарь -->
             <div
-                class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gold/20 w-full reveal-left mb-10 relative overflow-hidden">
+                class="bg-white/80 backdrop-blur-sm p-4 md:p-6 rounded-xl shadow-sm border border-gold/20 w-full reveal-left mb-10 relative overflow-hidden">
                 <div
                     class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-darkGold to-transparent">
                 </div>
-                <h3 class="font-serif text-3xl text-navy mb-1 uppercase tracking-widest">Aprel</h3>
-                <p class="font-sans text-sm tracking-widest text-darkGold mb-6">2 0 2 6</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-navy mb-1 uppercase tracking-widest">Aprel</h3>
+                <p class="font-sans text-xs md:text-sm tracking-widest text-darkGold mb-4 md:mb-6">2 0 2 6</p>
 
                 <div
-                    class="grid grid-cols-7 gap-2 text-center text-xs uppercase tracking-wider font-sans text-gray-400 mb-4">
+                    class="grid grid-cols-7 gap-1 md:gap-2 text-center text-[10px] md:text-xs uppercase tracking-wider font-sans text-gray-400 mb-3 md:mb-4">
                     <div>Du</div>
                     <div>Se</div>
                     <div>Ch</div>
@@ -313,13 +317,15 @@
                     <div>Sh</div>
                     <div>Ya</div>
                 </div>
-                <div class="grid grid-cols-7 gap-y-4 text-center text-lg font-sans text-navy/80 items-center">
+                <div
+                    class="grid grid-cols-7 gap-y-3 md:gap-y-4 text-center text-base md:text-lg font-sans text-navy/80 items-center">
                     <div class="text-gray-400">6</div>
 
                     <!-- Выделенная дата -->
                     <div class="relative flex justify-center items-center">
-                        <span class="absolute w-10 h-10 bg-darkGold rounded-full animate-pulse opacity-20"></span>
-                        <span class="absolute w-10 h-10 border-2 border-darkGold rounded-full"></span>
+                        <span
+                            class="absolute w-8 h-8 md:w-10 md:h-10 bg-darkGold rounded-full animate-pulse opacity-20"></span>
+                        <span class="absolute w-8 h-8 md:w-10 md:h-10 border-2 border-darkGold rounded-full"></span>
                         <span class="relative text-darkGold font-bold">7</span>
                     </div>
 
@@ -333,45 +339,51 @@
 
             <!-- Обратный отсчет -->
             <div class="mb-12 reveal w-full mt-6">
-                <p class="font-serif text-2xl text-navy mb-8">To'ygacha qoldi:</p>
-                <div class="flex justify-center gap-4">
+                <p class="font-serif text-xl md:text-2xl text-navy mb-6 md:mb-8">To'ygacha qoldi:</p>
+                <div class="flex justify-center gap-2 md:gap-4 flex-wrap">
                     <div class="flex flex-col items-center">
-                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-2xl md:text-3xl font-serif text-darkGold shadow-sm bg-white"
                             id="days">00</div>
-                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Kun</span>
+                        <span
+                            class="text-[10px] md:text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Kun</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-2xl md:text-3xl font-serif text-darkGold shadow-sm bg-white"
                             id="hours">00</div>
-                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soat</span>
+                        <span
+                            class="text-[10px] md:text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soat</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-2xl md:text-3xl font-serif text-darkGold shadow-sm bg-white"
                             id="minutes">00</div>
-                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Daqiqa</span>
+                        <span
+                            class="text-[10px] md:text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Daqiqa</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-2xl md:text-3xl font-serif text-darkGold shadow-sm bg-white"
                             id="seconds">00</div>
-                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soniya</span>
+                        <span
+                            class="text-[10px] md:text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soniya</span>
                     </div>
                 </div>
             </div>
 
             <!-- Локация -->
-            <div class="reveal-scale mt-8 mb-12">
-                <p class="font-sans text-sm tracking-[0.2em] uppercase text-gray-500 mb-2 font-medium">Manzil</p>
-                <h3 class="font-serif text-3xl text-navy font-semibold">SANTINI RESTAURANT</h3>
-                <p class="font-sans text-base text-gray-600 mt-2 mb-8">Boshlanish vaqti: 18:00</p>
+            <div class="reveal-scale mt-6 md:mt-8 mb-10 md:mb-12">
+                <p class="font-sans text-xs md:text-sm tracking-[0.2em] uppercase text-gray-500 mb-2 font-medium">Manzil
+                </p>
+                <h3 class="font-serif text-2xl md:text-3xl text-navy font-semibold px-2">SANTINI RESTAURANT</h3>
+                <p class="font-sans text-sm md:text-base text-gray-600 mt-2 mb-6 md:mb-8">Boshlanish vaqti: 18:00</p>
 
                 <!-- Фото ресторана -->
                 <img src="image copy 5.png" alt="Santini Restaurant"
-                    class="w-full max-w-sm mx-auto h-auto rounded-2xl shadow-lg mb-8 object-cover aspect-video hover:scale-[1.02] transition-transform duration-500">
+                    class="w-full max-w-sm mx-auto h-auto rounded-xl md:rounded-2xl shadow-lg mb-6 md:mb-8 object-cover aspect-video hover:scale-[1.02] transition-transform duration-500">
 
                 <a href="https://maps.app.goo.gl/VCUvxoWTNaK11hKp6" target="_blank"
-                    class="inline-flex items-center justify-center gap-3 bg-navy text-white px-10 py-5 rounded-full font-sans text-sm tracking-widest uppercase hover:bg-darkGold transition-colors duration-300 shadow-2xl group w-full max-w-xs mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:scale-110 transition-transform"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    class="inline-flex items-center justify-center gap-2 md:gap-3 bg-navy text-white px-6 py-4 md:px-10 md:py-5 rounded-full font-sans text-xs md:text-sm tracking-widest uppercase hover:bg-darkGold transition-colors duration-300 shadow-xl md:shadow-2xl group w-full max-w-[280px] md:max-w-xs mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5 md:h-6 md:w-6 group-hover:scale-110 transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
