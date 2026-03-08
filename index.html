@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuf & Mushtariybonu - Wedding Invitation</title>
+
+    <!-- Подключение шрифтов Google Fonts для элегантного дизайна -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        darkGold: '#B8935A',
+                        ivory: '#FAF7F2',
+                        navy: '#1A2A3A',
+                        envelope: {
+                            bg: '#E3D5C1',
+                            flap: '#E8DCC8',
+                            bottom: '#DCCEB9',
+                            dark: '#D1C0A8'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Стили для 3D анимации конверта */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Пульсация печати */
+        .seal-pulse {
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                filter: drop-shadow(0 0 0 rgba(218, 165, 32, 0.6));
+            }
+
+            70% {
+                filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0));
+            }
+
+            100% {
+                filter: drop-shadow(0 0 0 rgba(218, 165, 32, 0));
+            }
+        }
+
+        /* Анимация появления элементов при скролле */
+        .reveal,
+        .reveal-left,
+        .reveal-right,
+        .reveal-scale {
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal {
+            transform: translateY(40px);
+        }
+
+        .reveal-left {
+            transform: translateX(-40px);
+        }
+
+        .reveal-right {
+            transform: translateX(40px);
+        }
+
+        .reveal-scale {
+            transform: scale(0.9);
+        }
+
+        .reveal.active,
+        .reveal-left.active,
+        .reveal-right.active,
+        .reveal-scale.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Анимация летящих золотых частиц */
+        .particle {
+            position: absolute;
+            background: #D4AF37;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100svh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+                transform: translateY(80svh) scale(1);
+            }
+
+            90% {
+                opacity: 0.6;
+                transform: translateY(20svh) scale(1);
+            }
+
+            100% {
+                transform: translateY(-10svh) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Плавный скролл */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Декоративный фон для основного приглашения */
+        .bg-pattern {
+            background-color: #FAF7F2;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8935a' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body class="bg-black antialiased overflow-x-hidden selection:bg-darkGold selection:text-white">
+
+    <!-- СЦЕНА 1: КОНВЕРТ (Intro) -->
+    <div id="intro-screen"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-[#2a3035] transition-opacity duration-1000">
+
+        <!-- Ограничитель для мобильного вида -->
+        <div class="relative w-full h-[100dvh] max-w-md mx-auto overflow-hidden perspective-1000 bg-[#E8DCC8]">
+
+            <!-- Внутренняя часть конверта -->
+            <div class="absolute inset-0 bg-[#D1C0A8] z-0"></div>
+
+            <!-- Само письмо (Пригласительное) -->
+            <div id="letter"
+                class="absolute top-[15%] left-4 right-4 bottom-[15%] bg-ivory shadow-[0_0_20px_rgba(0,0,0,0.3)] transition-all duration-1000 ease-in-out z-10 flex flex-col items-center justify-start pt-16 border border-darkGold/30 rounded-sm">
+
+                <img src="ym_wedding_logo_banana_pro.png" alt="Y & M Logo"
+                    class="w-24 h-24 mb-2 object-contain drop-shadow-sm">
+
+                <div class="w-16 h-[1px] bg-darkGold/50 mt-6"></div>
+                <p class="font-sans text-xs tracking-widest text-navy uppercase mt-6">Taklifnoma</p>
+            </div>
+
+            <!-- Боковые створки -->
+            <div class="absolute inset-0 z-20 pointer-events-none drop-shadow-lg">
+                <div class="absolute inset-0 bg-[#E3D5C1]" style="clip-path: polygon(0 0, 50.5% 50%, 0 100%);"></div>
+                <div class="absolute inset-0 bg-[#E3D5C1]" style="clip-path: polygon(100% 0, 100% 100%, 49.5% 50%);">
+                </div>
+            </div>
+
+            <!-- Нижняя створка -->
+            <div class="absolute inset-0 z-20 bg-[#E8DCC8]" pointer-events-none"
+                style="clip-path: polygon(0 100%, 100% 100%, 50% 49%); filter: drop-shadow(0 -4px 6px rgba(0,0,0,0.15));">
+                <!-- Текст внизу -->
+                <div class="absolute bottom-[10%] w-full text-center px-6">
+                    <p class="font-script text-3xl text-navy opacity-95">Sizni</p>
+                    <p class="font-script text-4xl text-navy opacity-95 mt-[-5px]">to'yimizga</p>
+                    <p class="font-script text-3xl text-navy opacity-95 mt-[-5px] drop-shadow-sm">taklif qilamiz</p>
+                </div>
+            </div>
+
+            <!-- Верхняя створка (Анимированная) -->
+            <div id="envelope-flap-wrapper"
+                class="absolute top-0 left-0 w-full h-[55%] origin-top z-30 transition-transform duration-1000 preserve-3d"
+                style="filter: drop-shadow(0 8px 10px rgba(0,0,0,0.25));">
+                <!-- Лицевая сторона -->
+                <div class="absolute inset-0 bg-[#EBE0CD] backface-hidden flex flex-col items-center pt-[10%] pb-4"
+                    style="clip-path: polygon(0 0, 100% 0, 50% 101%);">
+                    <img src="ym_wedding_logo_banana_pro.png" alt="Y & M Logo"
+                        class="w-32 h-32 object-contain drop-shadow-sm opacity-95">
+                </div>
+                <!-- Обратная сторона -->
+                <div class="absolute inset-0 bg-[#DCCEB9] backface-hidden"
+                    style="transform: rotateX(180deg); clip-path: polygon(0 0, 100% 0, 50% 101%);"></div>
+            </div>
+
+            <!-- Сургучная печать (Кнопка) -->
+            <div
+                class="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex items-center justify-center">
+                <div id="wax-seal"
+                    class="w-[110px] h-[110px] cursor-pointer transition-all duration-300 hover:scale-105 relative flex items-center justify-center group seal-pulse">
+
+                    <!-- SVG формы печати для реалистичности -->
+                    <svg viewBox="0 0 100 100"
+                        class="absolute inset-0 w-full h-full drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)]">
+                        <defs>
+                            <linearGradient id="redWax" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FF5A5A" />
+                                <stop offset="20%" stop-color="#D32F2F" />
+                                <stop offset="50%" stop-color="#B71C1C" />
+                                <stop offset="85%" stop-color="#8E0000" />
+                                <stop offset="100%" stop-color="#4A0000" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M50,3 C74,1 91,15 95,35 C99,55 88,78 76,88 C62,100 40,95 24,88 C8,81 2,60 5,40 C8,18 26,5 50,3 Z"
+                            fill="url(#redWax)" />
+                    </svg>
+
+                    <!-- Внутренний круг с текстом -->
+                    <div
+                        class="relative w-[75px] h-[75px] rounded-full border-[1.5px] border-[#900] flex items-center justify-center bg-gradient-to-br from-[#D32F2F] to-[#B71C1C] shadow-[inset_0_3px_8px_rgba(50,0,0,0.5),0_1px_3px_rgba(255,255,255,0.4)]">
+                        <span
+                            class="font-sans font-bold text-[#FFE893] text-[13px] tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">OCHISH</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- СЦЕНА 2: ОСНОВНОЕ ПРИГЛАСИТЕЛЬНОЕ -->
+    <div id="main-content"
+        class="hidden opacity-0 transition-opacity duration-1000 max-w-md mx-auto bg-pattern min-h-screen relative shadow-[0_0_50px_rgba(0,0,0,0.3)] pb-24 overflow-hidden">
+
+        <!-- Контейнер для летящих золотых частиц -->
+        <div id="particles-container" class="absolute inset-0 pointer-events-none z-0"></div>
+
+        <!-- Элегантные рамки -->
+        <div
+            class="absolute top-4 left-4 right-4 bottom-4 border border-darkGold/30 rounded-t-full pointer-events-none">
+        </div>
+        <div
+            class="absolute top-6 left-6 right-6 bottom-6 border border-darkGold/15 rounded-t-full pointer-events-none">
+        </div>
+
+        <!-- Контент -->
+        <div class="relative z-10 pt-24 px-8 text-center flex flex-col items-center">
+
+            <!-- Декоративный логотип -->
+            <img src="ym_wedding_logo_banana_pro.png" alt="Y & M Logo"
+                class="w-24 h-24 mb-6 reveal object-contain drop-shadow-sm">
+
+            <!-- Вступление -->
+            <p class="font-sans text-sm tracking-[0.2em] uppercase mb-5 reveal text-darkGold font-medium">Taklifnoma</p>
+            <h2 class="font-serif text-3xl text-navy mb-5 reveal font-semibold">Hurmatli Mehmonlar!</h2>
+
+            <p class="font-sans text-base text-gray-700 leading-relaxed reveal max-w-sm mx-auto">
+                Sizlarni farzandlarimizning nikoh to'yiga bag'ishlangan tantanali marosimda aziz mehmonimiz bo'lishga
+                lutfan taklif etamiz.
+            </p>
+
+            <!-- Имена -->
+            <div class="my-16 reveal-scale w-full">
+                <h1 class="font-script text-7xl text-darkGold leading-tight drop-shadow-sm">Yusuf</h1>
+                <div class="flex items-center justify-center gap-4 my-4">
+                    <div class="w-16 h-[1px] bg-darkGold/40"></div>
+                    <span class="font-script text-5xl text-navy">&</span>
+                    <div class="w-16 h-[1px] bg-darkGold/40"></div>
+                </div>
+                <h1 class="font-script text-7xl text-darkGold leading-tight drop-shadow-sm">Mushtariybonu</h1>
+            </div>
+
+            <!-- Разделитель -->
+            <svg class="w-24 h-6 text-darkGold/50 mb-10 reveal-right" viewBox="0 0 100 20" fill="currentColor">
+                <path d="M50 10 L45 5 L50 0 L55 5 Z M20 10 L45 10 M55 10 L80 10" stroke="currentColor"
+                    stroke-width="0.5" />
+            </svg>
+
+            <!-- Календарь -->
+            <div
+                class="bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-gold/20 w-full reveal-left mb-10 relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-darkGold to-transparent">
+                </div>
+                <h3 class="font-serif text-3xl text-navy mb-1 uppercase tracking-widest">Aprel</h3>
+                <p class="font-sans text-sm tracking-widest text-darkGold mb-6">2 0 2 6</p>
+
+                <div
+                    class="grid grid-cols-7 gap-2 text-center text-xs uppercase tracking-wider font-sans text-gray-400 mb-4">
+                    <div>Du</div>
+                    <div>Se</div>
+                    <div>Ch</div>
+                    <div>Pa</div>
+                    <div>Ju</div>
+                    <div>Sh</div>
+                    <div>Ya</div>
+                </div>
+                <div class="grid grid-cols-7 gap-y-4 text-center text-lg font-sans text-navy/80 items-center">
+                    <div class="text-gray-400">6</div>
+
+                    <!-- Выделенная дата -->
+                    <div class="relative flex justify-center items-center">
+                        <span class="absolute w-10 h-10 bg-darkGold rounded-full animate-pulse opacity-20"></span>
+                        <span class="absolute w-10 h-10 border-2 border-darkGold rounded-full"></span>
+                        <span class="relative text-darkGold font-bold">7</span>
+                    </div>
+
+                    <div class="text-gray-400">8</div>
+                    <div class="text-gray-400">9</div>
+                    <div class="text-gray-400">10</div>
+                    <div class="text-gray-400">11</div>
+                    <div class="text-gray-400">12</div>
+                </div>
+            </div>
+
+            <!-- Обратный отсчет -->
+            <div class="mb-12 reveal w-full mt-6">
+                <p class="font-serif text-2xl text-navy mb-8">To'ygacha qoldi:</p>
+                <div class="flex justify-center gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                            id="days">00</div>
+                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Kun</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                            id="hours">00</div>
+                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soat</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                            id="minutes">00</div>
+                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Daqiqa</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-20 h-20 rounded-full border-[1.5px] border-darkGold flex items-center justify-center text-3xl font-serif text-darkGold shadow-sm bg-white"
+                            id="seconds">00</div>
+                        <span class="text-xs uppercase text-gray-500 mt-2 tracking-widest font-medium">Soniya</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Локация -->
+            <div class="reveal-scale mt-8 mb-12">
+                <p class="font-sans text-sm tracking-[0.2em] uppercase text-gray-500 mb-2 font-medium">Manzil</p>
+                <h3 class="font-serif text-3xl text-navy font-semibold">SANTINI RESTAURANT</h3>
+                <p class="font-sans text-base text-gray-600 mt-2 mb-8">Boshlanish vaqti: 18:00</p>
+
+                <!-- Фото ресторана -->
+                <img src="image copy 5.png" alt="Santini Restaurant"
+                    class="w-full max-w-sm mx-auto h-auto rounded-2xl shadow-lg mb-8 object-cover aspect-video hover:scale-[1.02] transition-transform duration-500">
+
+                <a href="https://maps.app.goo.gl/VCUvxoWTNaK11hKp6" target="_blank"
+                    class="inline-flex items-center justify-center gap-3 bg-navy text-white px-10 py-5 rounded-full font-sans text-sm tracking-widest uppercase hover:bg-darkGold transition-colors duration-300 shadow-2xl group w-full max-w-xs mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:scale-110 transition-transform"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Xaritadan ko'rish
+                </a>
+            </div>
+
+            <!-- Заключение -->
+            <div class="mt-20 mb-12 reveal">
+                <p class="font-serif text-3xl text-navy italic">Sizlarni kutib qolamiz!</p>
+            </div>
+
+        </div>
+        <!-- Background Music -->
+        <audio id="bgMusic" loop preload="auto">
+            <source src="Jada Facer - A Thousand Years (Lyrics).mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Music Control Button -->
+        <button id="musicToggle"
+            class="fixed top-4 right-4 z-[100] w-10 h-10 bg-darkGold/80 rounded-full flex items-center justify-center text-white backdrop-blur-sm shadow-lg transition-all hover:scale-110 hidden opacity-0 duration-1000">
+            <svg id="musicIconOn" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+            </svg>
+            <svg id="musicIconOff" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M4.27 3L3 4.27l9 9v.28c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4v-1.73l4.73 4.73L21 19.73 4.27 3zM14 7h4V3h-6v5.18l2 2z" />
+            </svg>
+        </button>
+
+        <script>
+            // ЛОГИКА МУЗЫКИ
+            const bgMusic = document.getElementById('bgMusic');
+            const musicToggle = document.getElementById('musicToggle');
+            const musicIconOn = document.getElementById('musicIconOn');
+            const musicIconOff = document.getElementById('musicIconOff');
+            let isMusicPlaying = false;
+
+            musicToggle.addEventListener('click', () => {
+                if (isMusicPlaying) {
+                    bgMusic.pause();
+                    musicIconOn.classList.add('hidden');
+                    musicIconOff.classList.remove('hidden');
+                } else {
+                    bgMusic.play().then(() => {
+                        musicIconOn.classList.remove('hidden');
+                        musicIconOff.classList.add('hidden');
+                    }).catch(e => console.log("Audio playback failed:", e));
+                }
+                isMusicPlaying = !isMusicPlaying;
+            });
+
+            // ЛОГИКА АНИМАЦИИ ОТКРЫТИЯ КОНВЕРТА
+            const seal = document.getElementById('wax-seal');
+            const flapWrapper = document.getElementById('envelope-flap-wrapper');
+            const letter = document.getElementById('letter');
+            const introScreen = document.getElementById('intro-screen');
+            const mainContent = document.getElementById('main-content');
+
+            seal.addEventListener('click', () => {
+                // Включаем музыку при первом взаимодействии
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicToggle.classList.remove('hidden');
+                    setTimeout(() => musicToggle.classList.remove('opacity-0'), 100);
+                }).catch(e => {
+                    console.log("Autoplay prevented:", e);
+                    musicToggle.classList.remove('hidden');
+                    setTimeout(() => {
+                        musicToggle.classList.remove('opacity-0');
+                        musicIconOn.classList.add('hidden');
+                        musicIconOff.classList.remove('hidden');
+                    }, 100);
+                });
+
+                // 1. Прячем печать
+                seal.classList.remove('seal-pulse');
+                seal.style.transform = 'scale(0)';
+                seal.style.opacity = '0';
+
+                // 2. Открываем верхнюю створку конверта
+                setTimeout(() => {
+                    flapWrapper.style.transform = 'rotateX(180deg)';
+                }, 300);
+
+                // 3. Выдвигаем письмо
+                setTimeout(() => {
+                    // Поднимаем письмо над открытой створкой
+                    letter.style.zIndex = '35';
+                    letter.style.transform = 'translateY(-150px) scale(1.05)';
+                }, 1000);
+
+                // 4. Плавный переход к основному приглашению
+                setTimeout(() => {
+                    introScreen.style.opacity = '0';
+                    mainContent.classList.remove('hidden');
+
+                    // Небольшая задержка перед проявлением
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        initScrollObserver();
+                    }, 50);
+
+                    // Полностью удаляем интро со страницы
+                    setTimeout(() => {
+                        introScreen.style.display = 'none';
+                    }, 1000);
+                }, 2000);
+            });
+
+            // ЛОГИКА ТАЙМЕРА ОБРАТНОГО ОТСЧЕТА
+            // Дата: 7 Апреля 2026 года, 18:00
+            const targetDate = new Date("April 7, 2026 18:00:00").getTime();
+
+            const countdownInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("days").innerText = "00";
+                    document.getElementById("hours").innerText = "00";
+                    document.getElementById("minutes").innerText = "00";
+                    document.getElementById("seconds").innerText = "00";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Добавляем нули спереди, если число меньше 10
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }, 1000);
+
+            // ЛОГИКА АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ
+            function initScrollObserver() {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.15
+                };
+
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            obs.unobserve(entry.target); // Анимируем только один раз
+                        }
+                    });
+                }, observerOptions);
+
+                document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+
+            // ЛОГИКА ЛЕТЯЩИХ ЗОЛОТЫХ ЧАСТИЦ
+            function initParticles() {
+                const container = document.getElementById('particles-container');
+                if (!container) return;
+
+                const particleCount = 25; // Количество частиц
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+
+                    // Случайный размер (от 2px до 6px), позиция (0-100%), длительность и задержка
+                    const size = Math.random() * 4 + 2;
+                    const left = Math.random() * 100;
+                    const duration = Math.random() * 15 + 10;
+                    const delay = Math.random() * 10;
+
+                    particle.style.width = `${size}px`;
+                    particle.style.height = `${size}px`;
+                    particle.style.left = `${left}%`;
+                    particle.style.animationDuration = `${duration}s`;
+                    particle.style.animationDelay = `${delay}s`;
+
+                    container.appendChild(particle);
+                }
+            }
+            initParticles();
+        </script>
+</body>
+
+</html>
